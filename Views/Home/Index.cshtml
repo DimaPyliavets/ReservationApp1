@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ReservationApp1.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Welcome to the Reservation App</h1>
+
+    <div class="container mt-4 mb-5">
+        <a href="@Url.Action("ShowListOfRestaurants", "Restaurants")" class="btn btn-primary btn-lg me-3">
+            <i class="bi bi-list"></i> Show Restaurants
+        </a>
+        <a href="@Url.Action("MakeReservation", "Reservation")" class="btn btn-success btn-lg">
+            <i class="bi bi-calendar-plus"></i> Make a Reservation
+        </a>
+    </div>
+
+    <div class="container carousel-box mt-3 p-3">
+        <div id="carouselExampleControlsNoTouching" class="carousel carousel-dark slide" data-bs-touch="true">
+
+            <div class="carousel-inner">
+                @if (Model != null && Model.Any())
+                {
+                    int currentIndex = 0;
+                    foreach (var item in Model)
+                    {
+                        <div class="carousel-item @(currentIndex == 0 ? "active" : "")">
+                            
+                            <div class="carousel">
+                                <h2>@item.RestaurantName</h2>
+                                <p>@item.Cuisine.CuisineDescription</p>
+                            </div>
+                            <img src="https://placehold.it/400x150" class="card-img-top" alt="@item.RestaurantName">
+                        </div>
+                        currentIndex++;
+                    }
+                }
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+   
+</div>

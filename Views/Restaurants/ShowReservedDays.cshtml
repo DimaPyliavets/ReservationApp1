@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DateTime>
+
+@{
+    ViewData["Title"] = "Show Reserved Days";
+}
+
+<h2>Reserved Days for Restaurant</h2>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var reservedDay in Model)
+        {
+            <li>@reservedDay.ToShortDateString()</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No reservations available for this restaurant.</p>
+}
+
+<a asp-action="ShowListOfRestaurants">Back to List</a>
