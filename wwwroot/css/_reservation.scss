@@ -1,0 +1,417 @@
+.reservation{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    width: 100dvw;
+
+    // &:before{
+    //     content: '';
+    //     position: absolute;
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: rgba(0,0,0,.75);
+    // }
+
+    &__wrapper{
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        height: 80dvh;
+        width: 90dvw;
+        background-color: rgba(120, 120, 120, 0.2);
+        border: 0.3rem solid rgba(120,120,120, 0.4);
+        // outline: 0.2rem solid rgba(120,120,120, 0.8);
+
+        // &:before{
+        //     content: '';
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 100%;
+        //     background-color: rgba(0,0,0,0.75);
+        // }
+    }
+
+    &__table{
+        position: relative;
+        // border: 0.2rem solid white;
+        // background-color: red;
+        transition: $transition;
+        cursor: pointer;
+
+    }
+}
+
+
+.firstRestaurant{
+    // &.entryLeft{
+    //     // background-color: green;
+    //     grid-row-start: 1;
+    //     grid-row-end: 4;
+    //     grid-column-start: 1;
+    //     grid-column-end: 9;
+    // }
+
+    &.doors-c1r2{
+        position: relative;
+        top: 16.666%;
+        height: 66.666%;
+        // width: 100%;
+        aspect-ratio: 1/1;
+        border-bottom-right-radius: 50rem;
+        border-top: 0.3rem solid rgba(120,120,120,0.4);
+        border-right: 0.3rem solid rgba(120,120,120,0.4);
+        border-bottom: 0.3rem solid rgba(120,120,120,0.4);
+        background: rgba(255,255,255,0.15);
+        grid-row-start: 1;
+        grid-row-end: 4;
+    }
+
+    &.doors-c14r1{
+        position: relative;
+        left: 30%;
+        width: 100%;
+        aspect-ratio: 1/1;
+        background: rgba(255,255,255,0.15);
+        border-bottom-right-radius: 50rem;
+        border-left: 0.3rem solid rgba(120,120,120,0.4);
+        border-right: 0.3rem solid rgba(120,120,120,0.4);
+        border-bottom: 0.3rem solid rgba(120,120,120,0.4);
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 14;
+        grid-column-end: 15;
+    }
+
+    &.doors-c16r1{
+        position: relative;
+        left: -30%;
+        width: 100%;
+        aspect-ratio: 1/1;
+        background: rgba(255,255,255,0.15);
+        border-bottom-left-radius: 50rem;
+        border-left: 0.3rem solid rgba(120,120,120,0.4);
+        border-right: 0.3rem solid rgba(120,120,120,0.4);
+        border-bottom: 0.3rem solid rgba(120,120,120,0.4);
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 16;
+        grid-column-end: 17;
+    }
+
+    &.bar{
+        position: relative;
+        // background-color: green;
+        grid-row-start: 1;
+        grid-row-end: 7;
+        grid-column-start: 9;
+        grid-column-end: 14;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // border: 0.3rem solid black;
+        // border-bottom-left-radius: 1.2rem;
+        // border-bottom-right-radius: 1.3rem;
+        
+        & > span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: #fff;
+        }
+
+        & > .bar--counter1{
+            position: absolute;
+            height: 20%;
+            width: 100%;
+            top: 100%;
+            left: 0;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+            // border: 0.3rem solid black;
+            box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
+            background: darken(#4b3619, 5%);
+            transform: translate(0%, -100%);
+
+            // &:after{
+            //     content: "";
+            //     position: absolute;
+            //     height: 0.5rem;
+            //     width: 0.5rem;
+            //     background: 
+            // }
+        }
+
+        & > .bar--counter2{
+            position: absolute;
+            height: 80.5%;
+            width: 20%;
+            top: 0%;
+            right: 0;
+            // border: 0.3rem solid black;
+            border-bottom: none;
+            box-shadow: 0px -25px 15px 10px rgba(0,0,0,0.4);
+            background: darken(#4b3619, 5%);
+        }
+
+        & > .bar--counter3{
+            position: absolute;
+            width: 80.5%;
+            height: 20%;
+            top: 0;
+            left: 0;
+            border-bottom-left-radius: 1rem;
+            box-shadow: -10px 15px 15px -5px rgba(0,0,0,0.4);
+            background: darken(#4b3619, 5%);
+        }
+    }
+
+    &.double__table-c1r4{
+        // background-color: yellow;
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    &.double__table-c1r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 10;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    &.double__table-c1r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    &.double__table-c3r4{
+        // background-color: yellow;
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+
+    &.double__table-c3r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 10;
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+
+    &.double__table-c3r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+
+    &.double__table-c5r4{
+        // background-color: yellow;
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 5;
+        grid-column-end: 7;
+    }
+
+    &.double__table-c5r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 10;
+        grid-column-start: 5;
+        grid-column-end: 7;
+    }
+
+    &.double__table-c5r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 5;
+        grid-column-end: 7;
+    }
+
+    &.double__table-c7r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 7;
+        grid-column-end: 9;
+    }
+
+    &.double__table-c9r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 9;
+        grid-column-end: 11;
+    }
+
+    &.double__table-c11r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 11;
+        grid-column-end: 13;
+    }
+
+    &.double__table-c13r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 13;
+        grid-column-end: 15;
+    }
+
+    &.double__table-c15r10{
+        // background-color: yellow;
+        grid-row-start: 10;
+        grid-row-end: 13;
+        grid-column-start: 15;
+        grid-column-end: 17;
+    }
+
+    &.single__table-c9r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        grid-column-start: 9;
+        grid-column-end: 10;
+    }
+
+    &.single__table-c10r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        grid-column-start: 10;
+        grid-column-end: 11;
+    }
+
+    &.single__table-c11r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        grid-column-start: 11;
+        grid-column-end: 12;
+    }
+
+    &.single__table-c12r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        grid-column-start: 12;
+        grid-column-end: 13;
+    }
+
+    &.single__table-c13r7{
+        // background-color: yellow;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        grid-column-start: 13;
+        grid-column-end: 14;
+    }
+
+    &.reservation__table{
+        &:hover{
+            & *{
+                background: #{$hover-color};
+                box-shadow: 0px 0px 15px 5px rgba(100, 100, 100,0.15);
+            }
+        }
+
+        &.table__taken{
+            cursor: default;
+            
+            & * {
+                background: darken(red,15%);
+            }
+
+            &:hover{
+
+                & > *,
+                & * {
+                    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+                }
+            }
+        }
+    }
+
+}
+
+.single__table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-chair{
+        
+        height: 75%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: white;
+        transition: $transition;
+        border: 0.3rem solid black;
+        box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+    }
+}
+
+.double__table{
+    position: relative;
+    &--chair{
+        position: absolute;
+        height: 30%;
+        width: 20%;
+        background: white;
+        border-radius: 0.4rem;
+        border: 0.3rem solid black;
+        box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        transition: $transition;
+
+        &.left-top{
+            top: 15%;
+            left: 15%;
+        }
+
+        &.left-bottom{
+            top: 55%;
+            left: 15%;
+        }
+
+        &.right-top{
+            top: 15%;
+            right: 15%;
+        }
+
+        &.right-bottom{
+            top: 55%;
+            right: 15%;
+        }
+    }
+
+    &--table{
+        position: absolute;
+        height: 85%;
+        width: 40%;
+        left: 50%;
+        top: 7.5%;
+        background: white;
+        border: 0.3rem solid black;
+        border-radius: 0.4rem;
+        transform: translate(-50%, 0%);
+        box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        transition: $transition;
+    }
+}

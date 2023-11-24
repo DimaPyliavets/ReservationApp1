@@ -6,66 +6,164 @@
 
 <h2>Make Reservation</h2>
 
-<form asp-controller="Reservation" asp-action="MakeReservation" method="post" class="needs-validation" novalidate>
-    @Html.AntiForgeryToken()
-
+<div class="container-fluid">
     <div class="row">
+        <!-- Left Side: Reservation Form -->
         <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="User.UserName">Name</label>
-                <input asp-for="User.UserName" class="form-control" required />
-                <span asp-validation-for="User.UserName" class="text-danger"></span>
-            </div>
+            <form asp-controller="Reservation" asp-action="MakeReservation" method="post" class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label asp-for="User.UserName" class="form-label">Name</label>
+                    <input asp-for="User.UserName" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter a username.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="User.UserSurname" class="form-label">Surname</label>
+                    <input asp-for="User.UserSurname" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter a surname.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="User.UserEmail" class="form-label">Email</label>
+                    <input asp-for="User.UserEmail" type="email" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter a valid email.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="User.UserPhone" class="form-label">Phone</label>
+                    <input asp-for="User.UserPhone" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please enter a valid phone number.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="RestaurantId" class="form-label">Select a Restaurant</label>
+                    <select asp-for="RestaurantId" asp-items="@ViewBag.Restaurants" class="form-control" required>
+                        <option value="">-- Select Restaurant --</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a restaurant.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ZoneId" class="form-label">Selected Zone</label>
+                    <select asp-for="ZoneId" asp-items="@ViewBag.Zones" class="form-control" required>
+                        <option value="">-- Select Zone --</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a zone.
+                    </div>
+                </div>
+
+                <div>
+                    <p>Zones Available: <span id="zoneCount">@ViewBag.ZoneCount</span></p>
+                </div>
+
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#reservationOffcanvas" aria-controls="reservationOffcanvas">
+                    Show Zones
+                </button>
+
+                <div class="mb-3">
+                    <label asp-for="ReservationDate" class="form-label">Select Date</label>
+                    <input asp-for="ReservationDate" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                    <div class="invalid-feedback">
+                        Please select a valid date.
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Reservation</button>
+            </form>
         </div>
 
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="User.UserSurname">Surname</label>
-                <input asp-for="User.UserSurname" class="form-control" required />
-                <span asp-validation-for="User.UserSurname" class="text-danger"></span>
+        <!-- Right Side: Toggleable Offcanvas -->
+        <div class="col-md-12">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="reservationOffcanvas" aria-labelledby="reservationOffcanvasLabel" style="width: 80%;">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="reservationOffcanvasLabel">Restaurant Zones</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <iframe src="" frameborder="0" style="width: 100%; height: 100%; min-height: 300px;"></iframe>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="User.UserEmail">Email</label>
-                <input asp-for="User.UserEmail" type="email" class="form-control" required />
-                <span asp-validation-for="User.UserEmail" class="text-danger"></span>
-            </div>
-        </div>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // Function to load zones based on the selected restaurant
+            function loadZones() {
+                var selectedRestaurantId = $("#RestaurantId").val();
+                $.ajax({
+                    url: '/Reservation/GetZones',
+                    type: 'GET',
+                    data: { restaurantId: selectedRestaurantId },
+                    success: function (data) {
+                        // Clear and repopulate the zone dropdown
+                        $("#ZoneId").empty();
+                        $.each(data, function (index, item) {
+                            $("#ZoneId").append($('<option>', {
+                                value: item.value,
+                                text: item.text
+                            }));
+                        });
 
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="User.UserPhone">Phone</label>
-                <input asp-for="User.UserPhone" class="form-control" required />
-                <span asp-validation-for="User.UserPhone" class="text-danger"></span>
-            </div>
-        </div>
-    </div>
+                        // Update the Zone count in ViewBag
+                        $.ajax({
+                            url: '/Reservation/GetZoneCount',
+                            type: 'GET',
+                            data: { restaurantId: selectedRestaurantId },
+                            success: function (zoneCount) {
+                                $("#zoneCount").text(zoneCount);
 
-    <div class="form-group">
-        <label asp-for="RestaurantId">Select Restaurant</label>
-        <select asp-for="RestaurantId" asp-items="@ViewBag.Restaurants" class="form-control" required>
-            <option value="">-- Select Restaurant --</option>
-        </select>
-        <span asp-validation-for="RestaurantId" class="text-danger"></span>
-    </div>
+                                // Update iframe src based on zone count
+                                updateIframeSrc(zoneCount);
+                            },
+                            error: function (error) {
+                                console.error("Error getting zone count:", error);
+                                alert("Error getting zone count.");
+                            }
+                        });
 
-    <div class="form-group">
-        <label asp-for="ZoneId">Select Zone</label>
-        <select asp-for="ZoneId" asp-items="@ViewBag.Zones" class="form-control" id="zoneDropdown" required>
-            <option value="">-- Select Zone --</option>
-        </select>
-        <span asp-validation-for="ZoneId" class="text-danger"></span>
-    </div>
+                    },
+                    error: function () {
+                        alert("Error loading zones.");
+                    }
+                });
+            }
 
-    <div class="form-group">
-        <label asp-for="ReservationDate">Select Date</label>
-        <input asp-for="ReservationDate" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
-        <span asp-validation-for="ReservationDate" class="text-danger"></span>
-    </div>
+            // Attach the loadZones function to the change event of the restaurant dropdown
+            $("#RestaurantId").change(loadZones);
 
-    <button type="submit" class="btn btn-primary">Submit Reservation</button>
-</form>
+            // Function to update iframe src based on zone count
+            function updateIframeSrc(zoneCount) {
+                var iframeSrc = "../../pages/reservation/reservation" + zoneCount + ".html";
+
+                // Set the updated src attribute
+                $("iframe").attr("src", iframeSrc);
+            }
+
+            // Handle offcanvas events to make it active when opened
+            $('#reservationOffcanvas').on('shown.bs.offcanvas', function () {
+                $(document.body).addClass('offcanvas-active');
+            });
+
+            // Handle offcanvas events to remove active class when closed
+            $('#reservationOffcanvas').on('hidden.bs.offcanvas', function () {
+                $(document.body).removeClass('offcanvas-active');
+            });
+        });
+    </script>
+}

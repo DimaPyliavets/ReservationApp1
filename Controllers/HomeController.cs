@@ -15,6 +15,11 @@ namespace ReservationApp1.Controllers
             _context = context;
         }
 
+        public IActionResult Start()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Index()
         {
             var restaurants = await _context.Restaurants

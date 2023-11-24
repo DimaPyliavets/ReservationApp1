@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DateTime>
+
+@{
+    ViewData["Title"] = "Show Reserved Days";
+}
+
+<div class="container mt-5">
+    <h2 class="display-4 mb-4">Reserved Days for Restaurant</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="list-group">
+            @foreach (var reservedDay in Model)
+            {
+                <div class="list-group-item">@reservedDay.ToShortDateString()</div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info mt-3" role="alert">
+            No reservations available for this restaurant.
+        </div>
+    }
+
+    <a class="btn btn-secondary mt-3" asp-controller="Restaurants" asp-action="ShowListOfRestaurants">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
+</div>

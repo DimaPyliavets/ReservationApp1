@@ -10,51 +10,67 @@
             <h2 class="card-title text-primary mb-4">Restaurant Information</h2>
             <hr />
 
-            <dl class="row">
-                <dt class="col-sm-2 fw-bold">Name:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.RestaurantName)</dd>
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">Name:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.RestaurantName)</dd>
 
-                <dt class="col-sm-2 fw-bold">Address:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.Address)</dd>
+                        <dt class="col-sm-4 fw-bold">Address:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Address)</dd>
 
-                <dt class="col-sm-2 fw-bold">Contact Number:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.ContactNumber)</dd>
+                        <dt class="col-sm-4 fw-bold">Contact Number:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ContactNumber)</dd>
 
-                <dt class="col-sm-2 fw-bold">Web Page:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.WebPage)</dd>
+                        <dt class="col-sm-4 fw-bold">Web Page:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.WebPage)</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">Cuisine:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Cuisine.CuisineName)</dd>
 
-                <dt class="col-sm-2 fw-bold">Cuisine:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.Cuisine.CuisineName)</dd>
+                        <dt class="col-sm-4 fw-bold">Open Time:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.OpenTime)</dd>
 
-                <dt class="col-sm-2 fw-bold">Open Time:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.OpenTime)</dd>
+                        <dt class="col-sm-4 fw-bold">Close Time:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.CloseTime)</dd>
 
-                <dt class="col-sm-2 fw-bold">Close Time:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.CloseTime)</dd>
+                        <dt class="col-sm-4 fw-bold">Open Days:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.OpenDays)</dd>
+                    </dl>
+                </div>
+            </div>
 
-                <dt class="col-sm-2 fw-bold">Open Days:</dt>
-                <dd class="col-sm-10">@Html.DisplayFor(model => model.OpenDays)</dd>
+            <hr />
 
-                <dt class="col-sm-2 fw-bold">Zones:</dt>
-                <dd class="col-sm-10">
-                    @foreach (var zone in Model.Zones)
-                    {
-                        <p><strong>@zone.ZoneName:</strong> Capacity: @zone.Capacity</p>
-                    }
-                </dd>
-            </dl>
+            <h3 class="text-primary mb-3">Zones:</h3>
+            <div class="row">
+                @foreach (var zone in Model.Zones)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@zone.ZoneName</h5>
+                                <p class="card-text"><strong>Capacity:</strong> @zone.Capacity</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="mt-4">
+                <a class="btn btn-secondary" asp-action="ShowListOfRestaurants">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+                <a class="btn btn-primary ms-2" asp-action="ShowMenuItems" asp-route-cuisineId="@Model.Cuisine.CuisineId" asp-route-restaurantId="@Model.RestaurantId">
+                    <i class="bi bi-file-earmark-text"></i> Show Menu
+                </a>
+                <a class="btn btn-info ms-2" asp-controller="Reservation" asp-action="ShowReservedDays" asp-route-restaurantId="@Model.RestaurantId">
+                    <i class="bi bi-calendar"></i> Reserved Days
+                </a>
+            </div>
         </div>
-    </div>
-
-    <div class="mt-4">
-        <a class="btn btn-secondary" asp-action="ShowListOfRestaurants">
-            <i class="bi bi-arrow-left"></i> Back to List
-        </a>
-        <a class="btn btn-primary ms-2" asp-action="ShowMenuItems" asp-route-cuisineId="@Model.Cuisine.CuisineId" asp-route-restaurantId="@Model.RestaurantId">
-            <i class="bi bi-file-earmark-text"></i> Show Menu
-        </a>
-        <a class="btn btn-info ms-2" asp-action="ShowReservedDays" asp-route-restaurantId="@Model.RestaurantId">
-            <i class="bi bi-calendar"></i> Reserved Days
-        </a>
     </div>
 </div>

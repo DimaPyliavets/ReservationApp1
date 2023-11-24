@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+    ViewData["Title"] = "Start";
+}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+    <title>Restaurant Reserver</title>
+</head>
+<body>
+    <main class="home__wrapper">
+        <div class="home__cards-container">
+
+            <div class="big-card"></div>
+            <div class="big-card"></div>
+            <div class="big-card">
+                <a class="btn" asp-area="" asp-controller="Restaurants" asp-action="ShowListOfRestaurants">
+                    Show Restaurants
+                    <img src="../../assets/utility/spoon.svg" alt="spoon" />
+                </a>
+            </div>
+            <div class="big-card"></div>
+            <div class="big-card"></div>
+
+            <div class="small-card"></div>
+            <div class="small-card"></div>
+            <div class="small-card"></div>
+            <div class="small-card"></div>
+
+        </div>
+    </main>
+</body>
+</html>
+

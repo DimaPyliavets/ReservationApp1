@@ -1,0 +1,21 @@
+.btn{
+    padding: 0.7rem 1.2rem;
+    background-color: rgba(21,23,27,1);
+    border: 0.2rem solid goldenrod;
+    text-decoration: none;
+    transition: all 250ms ease-in-out;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: $fancy-font;
+    color: goldenrod;
+
+
+    &:hover,
+    &:focus,
+    &:focus-visible{
+        background-color: #000;
+        border: 0.2rem solid gold;
+        color: gold;
+    }
+
+}

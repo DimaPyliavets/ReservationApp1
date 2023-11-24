@@ -7,7 +7,17 @@
 <div class="container mt-5">
     <h1 class="display-4 mb-4">All Restaurants</h1>
 
-    <div class="table-responsive">
+    <!-- Toggle buttons for switching between list and card views -->
+    <div class="btn-group mb-3" role="group">
+        <button type="button" class="btn btn-outline-primary active" id="listViewBtn">
+            <i class="bi bi-list-ul"></i> List View
+        </button>
+        <button type="button" class="btn btn-outline-primary" id="cardViewBtn">
+            <i class="bi bi-card-list"></i> Card View
+        </button>
+    </div>
+
+    <div class="table-responsive" id="listView">
         <table class="table table-striped table-bordered table-hover text-center">
             <thead class="thead-dark">
                 <tr>
@@ -44,4 +54,60 @@
             </tbody>
         </table>
     </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="cardView" style="display: none;">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.RestaurantName</h5>
+                        <p class="card-text"><strong>Address:</strong> @item.Address</p>
+                        <p class="card-text"><strong>Contact Number:</strong> @item.ContactNumber</p>
+                        <p class="card-text"><strong>Web Page:</strong> @item.WebPage</p>
+                        <p class="card-text"><strong>Cuisine:</strong> @item.Cuisine.CuisineName</p>
+                        <p class="card-text"><strong>Opening Time:</strong> @item.OpenTime</p>
+                        <p class="card-text"><strong>Closing Time:</strong> @item.CloseTime</p>
+                        <p class="card-text"><strong>Open Days:</strong> @item.OpenDays</p>
+                        <a href="@Url.Action("ShowRestaurantDetails", new { id = item.RestaurantId })" class="btn btn-info">
+                            <i class="bi bi-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // Function to switch between list and card views
+            function switchView(view) {
+                if (view === 'list') {
+                    $('#listView').show();
+                    $('#cardView').hide();
+                    $('#listViewBtn').addClass('active');
+                    $('#cardViewBtn').removeClass('active');
+                } else {
+                    $('#listView').hide();
+                    $('#cardView').show();
+                    $('#listViewBtn').removeClass('active');
+                    $('#cardViewBtn').addClass('active');
+                }
+            }
+
+            // Toggle button click events
+            $('#listViewBtn').click(function () {
+                switchView('list');
+            });
+
+            $('#cardViewBtn').click(function () {
+                switchView('card');
+            });
+
+            // Initial view (default is list view)
+            switchView('list');
+        });
+    </script>
+}
