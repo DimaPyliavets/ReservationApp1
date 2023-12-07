@@ -142,6 +142,31 @@ namespace ReservationApp1.Migrations
                         principalColumn: "ZoneId");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Tables",
+                columns: table => new
+                {
+                    TableId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ZoneId = table.Column<int>(type: "int", nullable: false),
+                    ReservationId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tables", x => x.TableId);
+                    table.ForeignKey(
+                        name: "FK_Tables_Reservations_ReservationId",
+                        column: x => x.ReservationId,
+                        principalTable: "Reservations",
+                        principalColumn: "ReservationId");
+                    table.ForeignKey(
+                        name: "FK_Tables_Zones_ZoneId",
+                        column: x => x.ZoneId,
+                        principalTable: "Zones",
+                        principalColumn: "ZoneId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Menus_CuisineId",
                 table: "Menus",
@@ -168,6 +193,16 @@ namespace ReservationApp1.Migrations
                 column: "CuisineId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tables_ReservationId",
+                table: "Tables",
+                column: "ReservationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tables_ZoneId",
+                table: "Tables",
+                column: "ZoneId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Zones_RestaurantId",
                 table: "Zones",
                 column: "RestaurantId");
@@ -178,6 +213,9 @@ namespace ReservationApp1.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Menus");
+
+            migrationBuilder.DropTable(
+                name: "Tables");
 
             migrationBuilder.DropTable(
                 name: "Reservations");

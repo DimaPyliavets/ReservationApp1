@@ -69,9 +69,10 @@
                     <p>Zones Available: <span id="zoneCount">@ViewBag.ZoneCount</span></p>
                 </div>
 
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#reservationOffcanvas" aria-controls="reservationOffcanvas">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reservationModal">
                     Show Zones
                 </button>
+
 
                 <div class="mb-3">
                     <label asp-for="ReservationDate" class="form-label">Select Date</label>
@@ -87,13 +88,17 @@
 
         <!-- Right Side: Toggleable Offcanvas -->
         <div class="col-md-12">
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="reservationOffcanvas" aria-labelledby="reservationOffcanvasLabel" style="width: 80%;">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="reservationOffcanvasLabel">Restaurant Zones</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <iframe src="" frameborder="0" style="width: 100%; height: 100%; min-height: 300px;"></iframe>
+            <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="reservationModalLabel">Restaurant Zones</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe data-reserved="" src="" frameborder="0" style="width: 100%; height: 100%; min-height: 300px;"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,13 +161,13 @@
             }
 
             // Handle offcanvas events to make it active when opened
-            $('#reservationOffcanvas').on('shown.bs.offcanvas', function () {
-                $(document.body).addClass('offcanvas-active');
+            $('#reservationModal').on('shown.bs.modal', function () {
+                $(document.body).addClass('modal-open');
             });
 
-            // Handle offcanvas events to remove active class when closed
-            $('#reservationOffcanvas').on('hidden.bs.offcanvas', function () {
-                $(document.body).removeClass('offcanvas-active');
+            // Handle modal events to remove active class when closed
+            $('#reservationModal').on('hidden.bs.modal', function () {
+                $(document.body).removeClass('modal-open');
             });
         });
     </script>

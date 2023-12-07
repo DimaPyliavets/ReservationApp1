@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReservationApp1.Data;
+using ReservationApp1.Models;
 
 namespace ReservationApp1.Controllers
 {
@@ -17,7 +18,12 @@ namespace ReservationApp1.Controllers
         {
             var restaurants = await _context.Restaurants
                 .Include(r => r.Cuisine)
-                .ToListAsync();
+            .ToListAsync();
+
+            if (restaurants == null)
+            {
+                return NotFound();
+            }
             return View(restaurants);
         }
 

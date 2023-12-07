@@ -10,7 +10,7 @@ namespace ReservationApp1.Data
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options) =>
-            options.UseSqlServer(@"Data Source=DESKTOP-O9T5PM1\SQL19;Initial Catalog=ReservationRestaurantDB;Integrated Security=True;Encrypt = false;");
+            options.UseSqlServer(@"Data Source=DESKTOP-PC9I1L1;Initial Catalog=ReservationRestaurantDB;Integrated Security=True;Encrypt = false;");
 
 
         public DbSet<Cuisine> Cuisines { get; set; }
@@ -19,6 +19,7 @@ namespace ReservationApp1.Data
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Zone> Zones { get; set; }
+        public DbSet<Tables> Tables { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

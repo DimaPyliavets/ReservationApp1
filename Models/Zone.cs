@@ -19,5 +19,7 @@ namespace ReservationApp1.Models
 
         [DisplayName("Capacity")]
         public int Capacity { get; set; }
+
+        public ICollection<Tables> Tables { get; set; }
     }
 }

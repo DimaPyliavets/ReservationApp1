@@ -25,5 +25,7 @@ namespace ReservationApp1.Models
         [ForeignKey("Zone")]
         public int ZoneId { get; set; }
         public Zone Zone { get; set; }
+
+        public ICollection<Tables> Tables { get; set; }
     }
 }
