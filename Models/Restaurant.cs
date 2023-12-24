@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ReservationApp1.Models
 {
@@ -31,6 +32,8 @@ namespace ReservationApp1.Models
         public Cuisine Cuisine { get; set; }
 
         public ICollection<Zone> Zones { get; set; }
+
+        public ICollection<Table> Tables { get; set; }
 
         [DataType(DataType.Time)]
         [DisplayName("Open Time")]

@@ -19,8 +19,7 @@ namespace ReservationApp1.Data
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Zone> Zones { get; set; }
-        public DbSet<Tables> Tables { get; set; }
-
+        public DbSet<Table> Tables { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

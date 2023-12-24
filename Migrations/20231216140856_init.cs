@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ReservationApp1.Migrations
 {
     /// <inheritdoc />
-    public partial class initial_mg : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -148,7 +148,7 @@ namespace ReservationApp1.Migrations
                 {
                     TableId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ZoneId = table.Column<int>(type: "int", nullable: false),
+                    RestaurantId = table.Column<int>(type: "int", nullable: false),
                     ReservationId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -160,10 +160,10 @@ namespace ReservationApp1.Migrations
                         principalTable: "Reservations",
                         principalColumn: "ReservationId");
                     table.ForeignKey(
-                        name: "FK_Tables_Zones_ZoneId",
-                        column: x => x.ZoneId,
-                        principalTable: "Zones",
-                        principalColumn: "ZoneId",
+                        name: "FK_Tables_Restaurants_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurants",
+                        principalColumn: "RestaurantId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -198,9 +198,9 @@ namespace ReservationApp1.Migrations
                 column: "ReservationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tables_ZoneId",
+                name: "IX_Tables_RestaurantId",
                 table: "Tables",
-                column: "ZoneId");
+                column: "RestaurantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Zones_RestaurantId",

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
 <body>
     <main class="reservation">
         <div class="reservation__wrapper">
-            
+
             <div class="firstRestaurant double__table double__table-c1r4 reservation__table">
                 <div class="double__table--chair left-top"></div>
                 <div class="double__table--chair right-top"></div>
@@ -119,5 +118,13 @@
             </div>
         </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.reservation__table').click(function () {
+                $(this).toggleClass('table__taken');
+            });
+        });
+    </script>
+
 </body>
-</html>

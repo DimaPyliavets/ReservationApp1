@@ -4,15 +4,18 @@ using System.ComponentModel;
 
 namespace ReservationApp1.Models
 {
-    public class Tables
+    public class Table
     {
         [Key]
         public int TableId { get; set; }
 
-        [ForeignKey("ZoneId")]
-        public int ZoneId { get; set; }
-        public Zone Zone { get; set; }
+        //[ForeignKey("ZoneId")]
+        //public int ZoneId { get; set; }
+        //public Zone Zone { get; set; }
 
-        //public ICollection<Reservation> Reservations { get; set; }
+        [ForeignKey("RestaurantId")]
+        public int RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
+
     }
 }

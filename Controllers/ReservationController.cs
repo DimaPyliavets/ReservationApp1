@@ -49,14 +49,23 @@ namespace ReservationApp1.Controllers
             return Json(zones);
         }
 
+        [HttpGet]
+        public JsonResult GetTables(int restaurantId)
+        {
+            var tables = _context.Tables
+                .Where(z => z.RestaurantId == restaurantId)
+                .Select(z => new { value = z.TableId })
+                .ToList();
+
+            return Json(tables);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> MakeReservation(Reservation reservation)
         {
-            if (!IsDateAvailable(reservation.ReservationDate, reservation.RestaurantId))
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("ReservationDate", "This date is not available for reservation in the selected restaurant.");
-                // Re-populate dropdowns and return to the view
                 PopulateDropdowns(reservation.RestaurantId);
                 return View(reservation);
             }
@@ -73,11 +82,16 @@ namespace ReservationApp1.Controllers
             await _context.SaveChangesAsync();
 
             reservation.UserId = user.UserId;
+
+            reservation.Tables = _context.Tables.Where(t => reservation.Tables.Contains(t.TableId)).ToList();
+            reservation.Zone = _context.Zones.FirstOrDefault(z => z.ZoneId == reservation.ZoneId);
+            reservation.Restaurant = _context.Restaurants.FirstOrDefault(r => r.RestaurantId == reservation.RestaurantId);
+
             _context.Reservations.Add(reservation);
             await _context.SaveChangesAsync();
-
             return RedirectToAction(nameof(ReservationDetails), new { id = reservation.ReservationId });
         }
+
 
         private bool IsDateAvailable(DateTime reservationDate, int restaurantId)
         {
@@ -95,7 +109,13 @@ namespace ReservationApp1.Controllers
                 .Where(z => z.RestaurantId == selectedRestaurantId)
                 .ToList();
 
+            List<Table> tables = _context.Tables
+                .Where(z => z.RestaurantId == selectedRestaurantId)
+                .ToList();
+
             ViewBag.Zones = new SelectList(zones, "ZoneId", "ZoneName");
+            ViewBag.Tables = new SelectList(tables, "TableId");
+
         }
 
         public async Task<IActionResult> ReservationDetails(int id)
@@ -134,6 +154,25 @@ namespace ReservationApp1.Controllers
             return Json(zoneCount);
         }
 
+        [HttpGet]
+        public IActionResult GetTableCount(int restaurantId)
+        {
+            var tableCount = _context.Tables.Count(t => t.RestaurantId == restaurantId);
+            return Json(tableCount);
+        }
+
+        [HttpGet]
+        public JsonResult GetReservedTables(int restaurantId, DateTime reservationDate)
+        {
+            var reservedTableIds = _context.Reservations
+                 .Where(r =>
+                     r.RestaurantId == restaurantId &&
+                     r.ReservationDate.Date == reservationDate.Date)
+                 .SelectMany(r => r.Tables.Select(t => t.TableId))
+                 .ToList();
+
+            return Json(reservedTableIds);
+        }
 
     }
 }

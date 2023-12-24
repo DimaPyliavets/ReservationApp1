@@ -1,0 +1,424 @@
+﻿@model ReservationApp1.Models.Reservation
+@{
+    Layout = null;
+}
+
+        <div class="row reservation__wrapper">
+
+            <div class="firstRestaurant doors-c1r2"></div>
+            <div class="firstRestaurant doors-c14r1"></div>
+            <div class="firstRestaurant doors-c16r1"></div>
+
+            <div class="firstRestaurant bar">
+                <span class="h1">Bar</span>
+
+                <div class="bar--counter1"></div>
+                <div class="bar--counter2"></div>
+                <div class="bar--counter3"></div>
+            </div>
+            <div class="firstRestaurant double__table-c1r4 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c1r7 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c1r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c3r4 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c3r7 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c3r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c5r4 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c5r7 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c5r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c5r7 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c7r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c9r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c11r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c13r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+            <div class="firstRestaurant double__table-c15r10 reservation__table">
+                <div class="double__table--chair left-top"></div>
+                <div class="double__table--chair right-top"></div>
+                <div class="double__table--chair left-bottom"></div>
+                <div class="double__table--chair right-bottom"></div>
+                <div class="double__table--table"></div>
+            </div>
+        </div>
+
+
+<style>
+.reservation__wrapper {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  height: 300px;
+  width: 100dpx;
+  min-height: 300px;
+  background-color: rgba(120, 120, 120, 0.2);
+  border: 0.3rem solid rgba(120, 120, 120, 0.4);
+}
+.reservation__table {
+  position: relative;
+  transition: all 250ms ease;
+  cursor: pointer;
+}
+
+.firstRestaurant.doors-c1r2 {
+  position: relative;
+  top: 16.666%;
+  height: 66.666%;
+  aspect-ratio: 1/1;
+  border-bottom-right-radius: 50rem;
+  border-top: 0.3rem solid rgba(120, 120, 120, 0.4);
+  border-right: 0.3rem solid rgba(120, 120, 120, 0.4);
+  border-bottom: 0.3rem solid rgba(120, 120, 120, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+.firstRestaurant.doors-c14r1 {
+  position: relative;
+  left: 30%;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: rgba(255, 255, 255, 0.15);
+  border-bottom-right-radius: 50rem;
+  border-left: 0.3rem solid rgba(120, 120, 120, 0.4);
+  border-right: 0.3rem solid rgba(120, 120, 120, 0.4);
+  border-bottom: 0.3rem solid rgba(120, 120, 120, 0.4);
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 14;
+  grid-column-end: 15;
+}
+.firstRestaurant.doors-c16r1 {
+  position: relative;
+  left: -30%;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: rgba(255, 255, 255, 0.15);
+  border-bottom-left-radius: 50rem;
+  border-left: 0.3rem solid rgba(120, 120, 120, 0.4);
+  border-right: 0.3rem solid rgba(120, 120, 120, 0.4);
+  border-bottom: 0.3rem solid rgba(120, 120, 120, 0.4);
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 16;
+  grid-column-end: 17;
+}
+.firstRestaurant.bar {
+  position: relative;
+  grid-row-start: 1;
+  grid-row-end: 7;
+  grid-column-start: 9;
+  grid-column-end: 14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.firstRestaurant.bar > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: #fff;
+}
+.firstRestaurant.bar > .bar--counter1 {
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
+  background: #382813;
+  transform: translate(0%, -100%);
+}
+.firstRestaurant.bar > .bar--counter2 {
+  position: absolute;
+  height: 80.5%;
+  width: 20%;
+  top: 0%;
+  right: 0;
+  border-bottom: none;
+  box-shadow: 0px -25px 15px 10px rgba(0, 0, 0, 0.4);
+  background: #382813;
+}
+.firstRestaurant.bar > .bar--counter3 {
+  position: absolute;
+  width: 80.5%;
+  height: 20%;
+  top: 0;
+  left: 0;
+  border-bottom-left-radius: 1rem;
+  box-shadow: -10px 15px 15px -5px rgba(0, 0, 0, 0.4);
+  background: #382813;
+}
+.firstRestaurant.double__table-c1r4 {
+  grid-row-start: 4;
+  grid-row-end: 7;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.firstRestaurant.double__table-c1r7 {
+  grid-row-start: 7;
+  grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.firstRestaurant.double__table-c1r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.firstRestaurant.double__table-c3r4 {
+  grid-row-start: 4;
+  grid-row-end: 7;
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+.firstRestaurant.double__table-c3r7 {
+  grid-row-start: 7;
+  grid-row-end: 10;
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+.firstRestaurant.double__table-c3r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+.firstRestaurant.double__table-c5r4 {
+  grid-row-start: 4;
+  grid-row-end: 7;
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+.firstRestaurant.double__table-c5r7 {
+  grid-row-start: 7;
+  grid-row-end: 10;
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+.firstRestaurant.double__table-c5r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+.firstRestaurant.double__table-c7r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 7;
+  grid-column-end: 9;
+}
+.firstRestaurant.double__table-c9r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 9;
+  grid-column-end: 11;
+}
+.firstRestaurant.double__table-c11r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 11;
+  grid-column-end: 13;
+}
+.firstRestaurant.double__table-c13r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 13;
+  grid-column-end: 15;
+}
+.firstRestaurant.double__table-c15r10 {
+  grid-row-start: 10;
+  grid-row-end: 13;
+  grid-column-start: 15;
+  grid-column-end: 17;
+}
+.firstRestaurant.single__table-c9r7 {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 9;
+  grid-column-end: 10;
+}
+.firstRestaurant.single__table-c10r7 {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 10;
+  grid-column-end: 11;
+}
+.firstRestaurant.single__table-c11r7 {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 11;
+  grid-column-end: 12;
+}
+.firstRestaurant.single__table-c12r7 {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 12;
+  grid-column-end: 13;
+}
+.firstRestaurant.single__table-c13r7 {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 13;
+  grid-column-end: 14;
+}
+.firstRestaurant.reservation__table:hover * {
+  background: rgb(51, 171, 249);
+  box-shadow: 0px 0px 15px 5px rgba(100, 100, 100, 0.15);
+}
+.firstRestaurant.reservation__table.table__taken {
+  cursor: default;
+}
+.firstRestaurant.reservation__table.table__taken * {
+  background: #b30000;
+}
+.firstRestaurant.reservation__table.table__taken:hover > *, .firstRestaurant.reservation__table.table__taken:hover * {
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+.single__table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single__table-chair {
+  height: 75%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: white;
+  transition: all 250ms ease;
+  border: 0.3rem solid black;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+.double__table {
+  position: relative;
+}
+.double__table--chair {
+  position: absolute;
+  height: 30%;
+  width: 20%;
+  background: white;
+  border-radius: 0.4rem;
+  border: 0.3rem solid black;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+  transition: all 250ms ease;
+}
+.double__table--chair.left-top {
+  top: 15%;
+  left: 15%;
+}
+.double__table--chair.left-bottom {
+  top: 55%;
+  left: 15%;
+}
+.double__table--chair.right-top {
+  top: 15%;
+  right: 15%;
+}
+.double__table--chair.right-bottom {
+  top: 55%;
+  right: 15%;
+}
+.double__table--table {
+  position: absolute;
+  height: 85%;
+  width: 40%;
+  left: 50%;
+  top: 7.5%;
+  background: white;
+  border: 0.3rem solid black;
+  border-radius: 0.4rem;
+  transform: translate(-50%, 0%);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+  transition: all 250ms ease;
+}
+
+</style>

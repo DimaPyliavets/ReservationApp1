@@ -12,8 +12,8 @@ using ReservationApp1.Data;
 namespace ReservationApp1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231130153849_initial_mg")]
-    partial class initial_mg
+    [Migration("20231216140856_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,7 +146,7 @@ namespace ReservationApp1.Migrations
                     b.ToTable("Restaurants");
                 });
 
-            modelBuilder.Entity("ReservationApp1.Models.Tables", b =>
+            modelBuilder.Entity("ReservationApp1.Models.Table", b =>
                 {
                     b.Property<int>("TableId")
                         .ValueGeneratedOnAdd()
@@ -157,14 +157,14 @@ namespace ReservationApp1.Migrations
                     b.Property<int?>("ReservationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ZoneId")
+                    b.Property<int>("RestaurantId")
                         .HasColumnType("int");
 
                     b.HasKey("TableId");
 
                     b.HasIndex("ReservationId");
 
-                    b.HasIndex("ZoneId");
+                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Tables");
                 });
@@ -272,19 +272,19 @@ namespace ReservationApp1.Migrations
                     b.Navigation("Cuisine");
                 });
 
-            modelBuilder.Entity("ReservationApp1.Models.Tables", b =>
+            modelBuilder.Entity("ReservationApp1.Models.Table", b =>
                 {
                     b.HasOne("ReservationApp1.Models.Reservation", null)
                         .WithMany("Tables")
                         .HasForeignKey("ReservationId");
 
-                    b.HasOne("ReservationApp1.Models.Zone", "Zone")
+                    b.HasOne("ReservationApp1.Models.Restaurant", "Restaurant")
                         .WithMany("Tables")
-                        .HasForeignKey("ZoneId")
+                        .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Zone");
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("ReservationApp1.Models.Zone", b =>
@@ -312,17 +312,14 @@ namespace ReservationApp1.Migrations
                 {
                     b.Navigation("Reservations");
 
+                    b.Navigation("Tables");
+
                     b.Navigation("Zones");
                 });
 
             modelBuilder.Entity("ReservationApp1.Models.User", b =>
                 {
                     b.Navigation("Rezervations");
-                });
-
-            modelBuilder.Entity("ReservationApp1.Models.Zone", b =>
-                {
-                    b.Navigation("Tables");
                 });
 #pragma warning restore 612, 618
         }
