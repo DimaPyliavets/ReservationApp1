@@ -157,6 +157,10 @@ namespace ReservationApp1.Migrations
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
 
+                    b.Property<string>("TableNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("TableId");
 
                     b.HasIndex("ReservationId");

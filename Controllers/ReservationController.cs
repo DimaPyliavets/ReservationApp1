@@ -64,11 +64,11 @@ namespace ReservationApp1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> MakeReservation(Reservation reservation)
         {
-            if (!ModelState.IsValid)
-            {
-                PopulateDropdowns(reservation.RestaurantId);
-                return View(reservation);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    PopulateDropdowns(reservation.RestaurantId);
+            //    return View(reservation);
+            //}
 
             var user = new User
             {
@@ -83,7 +83,17 @@ namespace ReservationApp1.Controllers
 
             reservation.UserId = user.UserId;
 
-            reservation.Tables = _context.Tables.Where(t => reservation.Tables.Contains(t.TableId)).ToList();
+            List<Table> tables = new List<Table>();
+
+            //foreach (var table in _context.Tables) 
+            //{
+            //    if (table) 
+            //    {
+            //        tables.Add(table);
+            //    }
+            //}
+
+            //reservation.Tables = _context.Tables.Where(t => reservation.Tables.Contains(t.TableId)).ToList();
             reservation.Zone = _context.Zones.FirstOrDefault(z => z.ZoneId == reservation.ZoneId);
             reservation.Restaurant = _context.Restaurants.FirstOrDefault(r => r.RestaurantId == reservation.RestaurantId);
 

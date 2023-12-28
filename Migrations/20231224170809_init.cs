@@ -148,6 +148,7 @@ namespace ReservationApp1.Migrations
                 {
                     TableId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    TableNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RestaurantId = table.Column<int>(type: "int", nullable: false),
                     ReservationId = table.Column<int>(type: "int", nullable: true)
                 },

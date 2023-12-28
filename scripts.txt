@@ -1,0 +1,189 @@
+﻿-- first setup // add restaurants and cuisines
+INSERT INTO [ReservationRestaurantDB].[dbo].[Cuisines] 
+    ([CuisineName], [CuisineDescription])
+VALUES
+    ('Italian', 'Delicious Italian cuisine with pasta and pizza'),
+    ('Pizza', 'Various types of pizza with different toppings'),
+    ('Japanese', 'Authentic Japanese sushi and sashimi'),
+    ('Mexican', 'Spicy Mexican dishes with tacos and burritos'),
+    ('Vegetarian', 'Healthy and delicious vegetarian options');
+
+INSERT INTO [ReservationRestaurantDB].[dbo].[Restaurants] 
+    ([RestaurantName], [Address], [ContactNumber], [WebPage], [CuisineId], [OpenTime], [CloseTime], [OpenDays])
+VALUES
+    ('Gourmet Delight', '123 Main Street', '+1 (555) 123-4567', 'http://www.gourmetdelight.com', 1, '10:00 AM', '9:00 PM', 'Monday to Saturday'),
+    ('Mamma Mia Pizzeria', '456 Oak Avenue', '+1 (555) 987-6543', 'http://www.mammamia.com', 2, '11:30 AM', '10:00 PM', 'Tuesday to Sunday'),
+    ('Sushi Haven', '789 Elm Square', '+1 (555) 321-0987', 'http://www.sushihaven.com', 3, '12:00 PM', '8:30 PM', 'Monday to Friday'),
+    ('TexMex Fiesta', '101 Pine Lane', '+1 (555) 555-1234', 'http://www.texmexfiesta.com', 4, '5:00 PM', '11:00 PM', 'Wednesday to Sunday'),
+    ('The Green Bowl', '202 Maple Street', '+1 (555) 876-5432', 'http://www.thegreenbowl.com', 5, '11:00 AM', '7:00 PM', 'Monday to Saturday');
+
+
+
+  -- add menu
+    INSERT INTO [ReservationRestaurantDB].[dbo].[Menus] 
+    ([Name], [Price], [CuisineId])
+VALUES
+    ('Margherita Pizza', 12.99, 1),
+    ('Spaghetti Bolognese', 15.99, 1),
+    ('Chicken Alfredo Pasta', 18.99, 1),
+    ('Caprese Salad', 8.99, 1),
+    ('Tiramisu', 7.99, 1),
+    ('Ravioli with Tomato Sauce', 16.99, 1),
+    ('Calzone', 14.99, 1),
+    ('Lasagna', 17.99, 1),
+    ('Minestrone Soup', 9.99, 1),
+    ('Pesto Genovese Pasta', 19.99, 1),
+    ('Prosciutto e Melone', 11.99, 1),
+    ('Fettuccine Alfredo', 14.99, 1),
+    ('Bruschetta', 6.99, 1),
+    ('Gnocchi with Pesto Sauce', 17.99, 1),
+    ('Osso Buco', 22.99, 1),
+    ('Mushroom Risotto', 20.99, 1),
+    ('Eggplant Parmesan', 16.99, 1),
+    ('Cannoli', 8.99, 1),
+    ('Seafood Linguine', 23.99, 1),
+    ('Italian Wedding Soup', 10.99, 1);
+
+
+    INSERT INTO [ReservationRestaurantDB].[dbo].[Menus] 
+    ([Name], [Price], [CuisineId])
+VALUES
+    ('Margherita Pizza', 10.99, 2),
+    ('Pepperoni Pizza', 12.99, 2),
+    ('Vegetarian Pizza', 11.99, 2),
+    ('Supreme Pizza', 14.99, 2),
+    ('Hawaiian Pizza', 13.99, 2),
+    ('BBQ Chicken Pizza', 15.99, 2),
+    ('Mushroom and Olive Pizza', 12.99, 2),
+    ('White Pizza', 11.99, 2),
+    ('Pesto Chicken Pizza', 14.99, 2),
+    ('Buffalo Chicken Pizza', 13.99, 2),
+    ('Spinach and Feta Pizza', 12.99, 2),
+    ('Sausage and Mushroom Pizza', 13.99, 2),
+    ('Veggie Delight Pizza', 11.99, 2),
+    ('Meat Lovers Pizza', 15.99, 2),
+    ('Four Cheese Pizza', 12.99, 2),
+    ('Bacon and Onion Pizza', 13.99, 2),
+    ('Artichoke and Tomato Pizza', 14.99, 2),
+    ('Garlic Knots', 4.99, 2),
+    ('Caesar Salad', 8.99, 2),
+    ('Chocolate Lava Cake', 6.99, 2);
+
+
+DECLARE @CuisineId INT = 3;
+INSERT INTO [ReservationRestaurantDB].[dbo].[Menus] 
+    ([Name], [Price], [CuisineId])
+VALUES
+    ('Sushi Combo A', 25.99, @CuisineId),
+    ('Tempura Udon', 12.99, @CuisineId),
+    ('Sashimi Platter', 30.99, @CuisineId),
+    ('Miso Soup', 4.99, @CuisineId),
+    ('Teriyaki Chicken Bento Box', 18.99, @CuisineId),
+    ('Salmon Nigiri', 8.99, @CuisineId),
+    ('Vegetable Tempura Roll', 15.99, @CuisineId),
+    ('Chawanmushi', 9.99, @CuisineId),
+    ('Shrimp Yakisoba', 14.99, @CuisineId),
+    ('Ebi Mayo', 7.99, @CuisineId),
+    ('Tuna Tataki', 16.99, @CuisineId),
+    ('Yaki Onigiri', 5.99, @CuisineId),
+    ('Spider Roll', 19.99, @CuisineId),
+    ('Agedashi Tofu', 6.99, @CuisineId),
+    ('Dragon Roll', 22.99, @CuisineId),
+    ('Edamame', 3.99, @CuisineId),
+    ('Okonomiyaki', 10.99, @CuisineId),
+    ('Green Tea Ice Cream', 8.99, @CuisineId),
+    ('Rainbow Roll', 24.99, @CuisineId),
+    ('Gyoza', 11.99, @CuisineId);
+
+
+    INSERT INTO [ReservationRestaurantDB].[dbo].[Menus] 
+    ([Name], [Price], [CuisineId])
+VALUES
+    ('Tacos Al Pastor', 9.99, 4),
+    ('Chicken Quesadilla', 8.99, 4),
+    ('Beef Enchiladas', 10.99, 4),
+    ('Guacamole and Chips', 5.99, 4),
+    ('Chiles Rellenos', 12.99, 4),
+    ('Burrito Bowl', 11.49, 4),
+    ('Sopes', 7.99, 4),
+    ('Mole Poblano', 13.99, 4),
+    ('Carnitas Tostadas', 10.49, 4),
+    ('Nachos Supreme', 8.99, 4),
+    ('Shrimp Ceviche', 14.99, 4),
+    ('Mexican Street Corn', 6.99, 4),
+    ('Horchata', 3.49, 4),
+    ('Churros', 4.99, 4),
+    ('Salsa Verde Chicken', 11.99, 4),
+    ('Elote Quesadilla', 9.49, 4),
+    ('Tamale', 7.99, 4),
+    ('Pico de Gallo', 4.49, 4),
+    ('Tres Leches Cake', 8.99, 4),
+    ('Jalapeno Margarita', 7.99, 4);
+
+
+DECLARE @VegetarianCuisineId INT
+SET @VegetarianCuisineId = 5
+INSERT INTO [ReservationRestaurantDB].[dbo].[Menus] 
+    ([Name], [Price], [CuisineId])
+VALUES
+    ('Grilled Vegetable Wrap', 8.99, @VegetarianCuisineId),
+    ('Quinoa Salad', 7.49, @VegetarianCuisineId),
+    ('Spinach and Feta Stuffed Mushrooms', 9.99, @VegetarianCuisineId),
+    ('Mushroom Risotto', 12.99, @VegetarianCuisineId),
+    ('Vegetarian Pad Thai', 10.99, @VegetarianCuisineId),
+    ('Eggplant Parmesan', 11.49, @VegetarianCuisineId),
+    ('Caprese Salad', 8.49, @VegetarianCuisineId),
+    ('Vegetarian Sushi Roll', 13.99, @VegetarianCuisineId),
+    ('Chickpea Curry', 10.49, @VegetarianCuisineId),
+    ('Vegetable Stir-Fry', 9.99, @VegetarianCuisineId),
+    ('Roasted Butternut Squash Soup', 6.99, @VegetarianCuisineId),
+    ('Sweet Potato Gnocchi', 11.99, @VegetarianCuisineId),
+    ('Avocado Toast', 7.99, @VegetarianCuisineId),
+    ('Greek Salad', 8.99, @VegetarianCuisineId),
+    ('Vegetarian Chili', 9.49, @VegetarianCuisineId),
+    ('Cauliflower Steak', 12.49, @VegetarianCuisineId),
+    ('Veggie Burger', 10.99, @VegetarianCuisineId),
+    ('Tomato Basil Bruschetta', 7.29, @VegetarianCuisineId),
+    ('Ratatouille', 11.99, @VegetarianCuisineId),
+    ('Broccoli and Cheese Stuffed Bell Peppers', 9.79, @VegetarianCuisineId);
+
+
+
+    --- add zones 
+    -- Insert zones for RestaurantId 2 (count: 3)
+INSERT INTO [ReservationRestaurantDB].[dbo].[Zones]
+    ([ZoneName], [RestaurantId], [Capacity])
+VALUES
+    ('Main Dining Area', 2, 9),
+    ('Private Lounge', 2, 5),
+    ('Outdoor Patio', 2, 5);
+
+-- Insert zones for RestaurantId 3 (count: 3)
+INSERT INTO [ReservationRestaurantDB].[dbo].[Zones]
+    ([ZoneName], [RestaurantId], [Capacity])
+VALUES
+    ('Family Section', 3, 9),
+    ('Bar Area', 3, 5),
+    ('Event Hall', 3, 5);
+
+-- Insert zones for RestaurantId 4 (count: 2)
+INSERT INTO [ReservationRestaurantDB].[dbo].[Zones]
+    ([ZoneName], [RestaurantId], [Capacity])
+VALUES
+    ('Cozy Corner', 4, 9),
+    ('VIP Lounge', 4, 5);
+
+-- Insert zones for RestaurantId 5 (count: 2)
+INSERT INTO [ReservationRestaurantDB].[dbo].[Zones]
+    ([ZoneName], [RestaurantId], [Capacity])
+VALUES
+    ('Main Hall', 5, 9),
+    ('Terrace Seating', 5, 5);
+
+-- Insert zones for RestaurantId 6 (count: 3)
+INSERT INTO [ReservationRestaurantDB].[dbo].[Zones]
+    ([ZoneName], [RestaurantId], [Capacity])
+VALUES
+    ('Quiet Nook', 6, 9),
+    ('Game Room', 6, 5),
+    ('Sky Lounge', 6, 5);

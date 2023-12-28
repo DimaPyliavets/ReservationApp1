@@ -26,6 +26,6 @@ namespace ReservationApp1.Models
         public int ZoneId { get; set; }
         public Zone Zone { get; set; }
 
-        public ICollection<Table> Tables { get; set; }
+        public List<Table> Tables { get; set; }
     }
 }

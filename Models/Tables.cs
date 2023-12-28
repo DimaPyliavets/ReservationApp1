@@ -9,9 +9,8 @@ namespace ReservationApp1.Models
         [Key]
         public int TableId { get; set; }
 
-        //[ForeignKey("ZoneId")]
-        //public int ZoneId { get; set; }
-        //public Zone Zone { get; set; }
+        [Required]
+        public string TableNumber { get; set; }
 
         [ForeignKey("RestaurantId")]
         public int RestaurantId { get; set; }

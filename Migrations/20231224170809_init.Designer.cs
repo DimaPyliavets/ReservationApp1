@@ -12,7 +12,7 @@ using ReservationApp1.Data;
 namespace ReservationApp1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231216140856_init")]
+    [Migration("20231224170809_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -159,6 +159,10 @@ namespace ReservationApp1.Migrations
 
                     b.Property<int>("RestaurantId")
                         .HasColumnType("int");
+
+                    b.Property<string>("TableNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TableId");
 

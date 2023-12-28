@@ -31,6 +31,7 @@ namespace ReservationApp1.Data
                 .HasForeignKey(r => r.ZoneId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+
         }
 
     }
